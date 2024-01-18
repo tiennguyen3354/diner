@@ -21,7 +21,11 @@ $f3 = Base::instance(); //Object
 // Define a default route
 // route is a method of the Base class
 $f3->route('GET /', function () {
-    echo "My Diner";
+//    echo "My Diner";
+
+    //Display a view page
+    $view = new Template();
+    echo $view->render('views/home.html');
 });
 
 // Run Fat-Free
