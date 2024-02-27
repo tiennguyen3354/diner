@@ -17,39 +17,28 @@ require_once ('vendor/autoload.php');
 // Just like in JAVA you instantiate a class.
 // Base is a class from the Fat Free Framework
 $f3 = Base::instance(); //Object
+$con = new Controller($f3);
+
 
 // Define a default route
 // route is a method of the Base class
 $f3->route('GET /', function () {
-//    echo "My Diner";
-
-    //Display a views page
-    $view = new Template();
-    echo $view->render('views/info.html');
+    $GLOBALS['con']->home();
 });
 
 //reroute to breakfast page .
 $f3->route('GET /breakfast', function () {
-//    echo "My Diner";
-    //Display a views page
-    $view = new Template();
-    echo $view->render('views/breakfast.html');
+    $GLOBALS['con']->breakFast();
 });
 
 //reroute to order1
-$f3->route('GET /order-form-1', function () {
-//    echo "My Diner";
-    //Display a views page
-    $view = new Template();
-    echo $view->render('views/order-form-1.html');
+$f3->route('GET|POST /order-form-1', function () {
+    $GLOBALS['con']->order1();
 });
 
 //reroute to order2
 $f3->route('GET /order-form-2', function ($f3) {
-//    echo "My Diner";
-    //Display a views page
-    $view = new Template();
-    echo $view->render('views/order-form-2.html');
+
 
     //echo "Order Form Part I";
 
@@ -67,6 +56,10 @@ $f3->route('GET /order-form-2', function ($f3) {
         // Redirect to order2 route
         $f3->reroute('order2');
     }
+    //    echo "My Diner";
+    //Display a views page
+    $view = new Template();
+    echo $view->render('views/order-form-2.html');
 });
 
 // Run Fat-Free
