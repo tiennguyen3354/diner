@@ -34,4 +34,8 @@ class DataLayer
     {
         return array("breakfast" , "brunch" , "lunch", "diner");
     }
+    static function getCondiments ()
+    {
+        return array("mustard" , "ketchup" , "Hot chilli sauce", "the best sauce there is");
+    }
 }

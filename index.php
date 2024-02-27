@@ -37,29 +37,8 @@ $f3->route('GET|POST /order-form-1', function () {
 });
 
 //reroute to order2
-$f3->route('GET /order-form-2', function ($f3) {
-
-
-    //echo "Order Form Part I";
-
-    // If the form has been posted
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        // Validate the data
-        $food = $_POST['food'];
-        $meal = $_POST['meal'];
-
-        // Put the data in the session array
-        $f3->set('SESSION.food', $food);
-        $f3->set('SESSION.meal', $meal);
-
-        // Redirect to order2 route
-        $f3->reroute('order2');
-    }
-    //    echo "My Diner";
-    //Display a views page
-    $view = new Template();
-    echo $view->render('views/order-form-2.html');
+$f3->route('GET|POST /order-form-2', function ($f3) {
+    $GLOBALS['con']->order2();
 });
 
 // Run Fat-Free

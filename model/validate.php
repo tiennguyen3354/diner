@@ -18,4 +18,5 @@ class Validate
     {
         return in_array($meal, DataLayer::getMeals());
     }
+
 }
